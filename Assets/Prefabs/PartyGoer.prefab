@@ -259,9 +259,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b0f7f85a76b5c4790e40e8a30c3c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyGoerBrain
-  amSober: 0
-  myNeighbors: []
-  currentChair: 0
+  true_origin: {x: 0, y: 0}
+  origin: {x: 0, y: 0}
+  satisfied: 0
+  drinking: 0
+  eating: 0
+  talking: 0
+  too_noisy: 0
+  not_alone: 0
+  currentChair: {fileID: 0}
+  Wants: 
 --- !u!61 &4569039078503273778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -296,7 +303,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.6}
+  m_Offset: {x: 0, y: -0.5034281}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -306,5 +313,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.991602}
   m_EdgeRadius: 0

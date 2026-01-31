@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
+
 
 public class MouseManager : MonoBehaviour
 {
@@ -48,6 +50,7 @@ public class MouseManager : MonoBehaviour
 
     void RayCasting()
     {
+        
         Collider2D thingHovering = Physics2D.OverlapPoint(mousePos);
 
         if (thingHovering != null && thingHovering.GetComponent<PartyGoerBrain>() != null) //if a person, show info about them :)
@@ -61,7 +64,7 @@ public class MouseManager : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (thingHovering.GetComponent<PartyGoerBrain>() != null)
+            if (thingHovering != null && thingHovering.GetComponent<PartyGoerBrain>() != null)
             {
                 selectedPerson = thingHovering.GetComponent<PartyGoerBrain>();
 
@@ -71,23 +74,122 @@ public class MouseManager : MonoBehaviour
 
         if (Mouse.current.leftButton.isPressed)
         {
-            selectedPerson.transform.position = mousePos;
+            if (selectedPerson)
+            {
+               selectedPerson.transform.position = mousePos;
+            }
+           
             
         }
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            GameObject chair = Physics2D.OverlapPoint(mousePos, 8).gameObject; // 8 as in the layer 3 which is chairs only
-            // This line makes an error but not a bad one ^^^^^
-            
-            if (chair != null)
+            if (!selectedPerson) // no selected person = do nothing
             {
-                selectedPerson.transform.SetParent(chair.transform, false);
-                selectedPerson.transform.localPosition = new Vector2(0,1); // Sit down....
+                return;
+            }
+            GameObject chair = null;
+            //bool waiting = false;
+            //preferably change it so the overlap is around the person instead (more intuitive but can be done later)
+            List<Collider2D> potentialchairs = new List<Collider2D>(); //should only be 1 at any given time
+            Physics2D.OverlapCollider(selectedPerson.GetComponent<BoxCollider2D>(), potentialchairs); // doesnt work unless nothing in the scene has a hitbox except chairs peoople, waiting are
+            for (int i = 0; i < potentialchairs.Count; i++)
+            {
+                if (potentialchairs[i].transform.GetComponent<ChairBrain>() != null) // if it has a chair brain it is a chair
+                {
+                   chair = potentialchairs[i].transform.gameObject;
+                }
+                /*if (potentialchairs[i].transform.tag == "Waiting") // if it has a chair brain it is a chair
+                {
+                    waiting = true;
+                    break;
+                }*/
+            }
+             
+           
+
+                //Physics2D.OverlapPoint(mousePos, 8).gameObject; // 8 as in the layer 3 which is chairs only
+            // This line makes an error but not a bad one ^^^^^
+
+            
+
+            if (chair != null)// if chair is already taken
+            {
+                ChairBrain chairbrain = chair.GetComponent<ChairBrain>();
+                if (chairbrain.myPerson != null) //swap places
+                {
+                    if (selectedPerson.currentChair != null) // if the selected person was previously in a chair
+                    {
+                        // move the person who you're dropping onto, into the chair you moved the selected person out of
+
+                        selectedPerson.currentChair.myPerson = chairbrain.myPerson;
+                        chairbrain.myPerson.currentChair = selectedPerson.currentChair;
+                        
+                        chairbrain.myPerson.transform.SetParent(selectedPerson.currentChair.transform, false);
+                        chairbrain.myPerson.transform.localPosition = new Vector2(0, 1);
+
+
+
+
+                        selectedPerson.transform.SetParent(chair.transform, false);
+                        selectedPerson.transform.localPosition = new Vector2(0, 1); // Sit down....
+                        selectedPerson.currentChair = chairbrain;
+                        chairbrain.myPerson = selectedPerson;
+                    } else // the selectedperson was still waiting in a seat
+                    {
+                        chairbrain.myPerson.currentChair = null;
+                        chairbrain.myPerson.transform.SetParent(null);
+                        chairbrain.myPerson.transform.position = chairbrain.myPerson.true_origin;
+
+                        selectedPerson.transform.SetParent(chair.transform, false);
+                        selectedPerson.transform.localPosition = new Vector2(0, 1); // Sit down....
+                        selectedPerson.currentChair = chairbrain;
+                        chairbrain.myPerson = selectedPerson;
+                    }
+                } else // chair is empty
+                {
+                    if (selectedPerson.currentChair) //remove self from old chair
+                    {
+                        selectedPerson.currentChair.myPerson = null;
+                    }
+
+                    selectedPerson.transform.SetParent(chair.transform, false);
+                    selectedPerson.transform.localPosition = new Vector2(0, 1); // Sit down....
+                    selectedPerson.currentChair = chairbrain;
+                    chairbrain.myPerson = selectedPerson;
+
+                    
+                }
+                
 
 
                 selectedPerson = null;
+            } /*else if (waiting){ //if colliding with waiting area, return to true origin
+                if (selectedPerson.currentChair) //remove self from old chair
+                {
+                    selectedPerson.currentChair.myPerson = null;
+                }
+                selectedPerson.currentChair = null;
+                selectedPerson.transform.SetParent(null);
+                selectedPerson.transform.position = selectedPerson.true_origin;
+            }*/  else
+            {
+                selectedPerson.transform.SetParent(null);
+                if (selectedPerson.currentChair) //remove self from old chair
+                {
+                    selectedPerson.currentChair.myPerson = null;
+                    selectedPerson.currentChair = null;
+                    selectedPerson.transform.position = selectedPerson.true_origin;
+                } else
+                {
+                    selectedPerson.transform.position = selectedPerson.true_origin;
+                }
+                
+                
             }
+
+
+
             selectedPerson = null;
         }
     }
