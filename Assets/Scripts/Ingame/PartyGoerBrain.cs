@@ -10,8 +10,11 @@ public class PartyGoerBrain : MonoBehaviour
     public enum Mood {happy, neutral, sad};
     public Mood myMood;
 
-    public enum Want {talk_with_someone, drink_with_someone, eat_with_someone, be_alone, dont_want_noise, sit_with_someone_with_mood_happy, sit_with_someone_with_mood_neutral, sit_with_someone_with_mood_sad, sit_with_someone_with_style_plain, sit_with_someone_with_style_fancy, sit_with_someone_with_style_professional }; //styles are placeholders, styles are just for fun
+    public enum Want {talk_with_someone, drink_with_someone, eat_with_someone, be_alone, dont_want_noise, sit_with_someone_with_mood_happy, sit_with_someone_with_mood_neutral, sit_with_someone_with_mood_sad, sit_with_someone_with_style_plain, sit_with_someone_with_style_fancy, sit_with_someone_with_style_professional, partnered, limited_number_of_people_at_table, sit_next_to_only_x_people, square_table, circle_table, soft_seat, wood_seat, end_of_a_table}; //styles are placeholders, styles are just for fun
     public List<Want> wants;
+
+    public int limited_number_of_people_at_table_limit; //if they only want to sit at a tavle with limited people this is the limit
+    public int sit_next_to_only_x_people_x; //if they only want to sit next to a certain number of people, this is the number
 
     public enum Style {plain, fancy, professional };
     public Style myStyle;

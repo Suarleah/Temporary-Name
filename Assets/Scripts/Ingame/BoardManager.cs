@@ -54,8 +54,32 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.drink_with_someone:
                                 satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.drink_with_someone);
                                 break;
+                            case PartyGoerBrain.Want.partnered:
+                                satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.partnered);
+                                break;
                             case PartyGoerBrain.Want.be_alone:
                                 satisfied = satisfied && !searchPeople(table.type, i, table.myChairs);
+                                break;
+                            case PartyGoerBrain.Want.limited_number_of_people_at_table:
+                                satisfied = satisfied && (TablePopulation(table)==person.limited_number_of_people_at_table_limit);
+                                break;
+                            case PartyGoerBrain.Want.sit_next_to_only_x_people:
+                                satisfied = satisfied && (CountNeighbors(table.type, i, table.myChairs) == person.sit_next_to_only_x_people_x);
+                                break;
+                            case PartyGoerBrain.Want.circle_table:
+                                satisfied = satisfied && table.type == TableBrain.Type.circle;
+                                break;
+                            case PartyGoerBrain.Want.square_table:
+                                satisfied = satisfied && table.type==TableBrain.Type.square;
+                                break;
+                            case PartyGoerBrain.Want.end_of_a_table:
+                                satisfied = satisfied && checkSeatAttribute(i, table.myChairs, ChairBrain.Attribute.end_of_table);
+                                break;
+                            case PartyGoerBrain.Want.soft_seat:
+                                satisfied = satisfied && checkSeatType(i, table.myChairs, ChairBrain.Type.soft);
+                                break;
+                            case PartyGoerBrain.Want.wood_seat:
+                                satisfied = satisfied && checkSeatType(i, table.myChairs, ChairBrain.Type.wood);
                                 break;
                         }
                     }
@@ -181,5 +205,68 @@ public class BoardManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool checkSeatType(int chairIndex, ChairBrain[] chairs, ChairBrain.Type type)// checks chair type
+    {
+        if (chairs[chairIndex].type == type)
+        {
+            return true;
+        }
+        
+
+        return false;
+    }
+
+    public bool checkSeatAttribute(int chairIndex, ChairBrain[] chairs, ChairBrain.Attribute attribute)// checks chair type
+    {
+        List<ChairBrain.Attribute> list = chairs[chairIndex].attributes;
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == attribute)
+            {
+                return true;
+            }
+        }
+        
+
+
+        return false;
+    }
+
+    public int TablePopulation (TableBrain table)
+    {
+        int sum = 0;
+        for (int i = 0; i < table.myChairs.Length; i++)
+        {
+            if (table.myChairs[i].myPerson)
+            {
+                sum++;
+            }
+        }
+
+        return sum;
+    }
+
+    public int CountNeighbors(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs)//just checks if people exist
+    {
+        int sum = 0;
+        if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson != null)
+        {
+            sum++;
+        }
+        if (chairs[(chairIndex + 1) % chairs.Length].myPerson != null)
+        {
+            sum++;
+        }
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null)
+            {
+                sum++;
+            }
+        }
+
+        return sum;
     }
 }
