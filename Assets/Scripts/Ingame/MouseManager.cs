@@ -21,7 +21,6 @@ public class MouseManager : MonoBehaviour
     {
         infoPanel.SetActive(false);
         infoText = infoPanel.GetComponentInChildren<TextMeshProUGUI>();
-
         //Debug.Log(LayerMask.GetMask("Chairs"));
     }
 
@@ -48,17 +47,19 @@ public class MouseManager : MonoBehaviour
         infoPanel.transform.position = new Vector3(mousePos.x + infoPanelOffset.x, mousePos.y + infoPanelOffset.y, 0);
 
         string text = "";
-        for (int i = 0; i < partyGoer.Wants.Count; i++) //display wants
+        for (int i = 0; i < partyGoer.wants.Count; i++) //display wants
         {
             if (text != "")
             {
                 text += "\n";
             }
 
-            switch (partyGoer.Wants[i])
+            switch (partyGoer.wants[i])
             {
-                
-                case PartyGoerBrain.want.drink_with_someone:
+                case PartyGoerBrain.Want.sit_with_someone_with_mood_happy:
+                    text += "I wanna sit next to someone who's happy!";
+                    break;
+                case PartyGoerBrain.Want.drink_with_someone:
                     text += "I wanna drink with someone!";
                     break;
             }
@@ -108,6 +109,7 @@ public class MouseManager : MonoBehaviour
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
+
             if (!selectedPerson) // no selected person = do nothing
             {
                 return;
@@ -196,7 +198,7 @@ public class MouseManager : MonoBehaviour
                 selectedPerson.currentChair = null;
                 selectedPerson.transform.SetParent(null);
                 selectedPerson.transform.position = selectedPerson.true_origin;
-            }*/  else
+            }*/  else //dragged somewhere with no chair
             {
                 selectedPerson.transform.SetParent(null);
                 if (selectedPerson.currentChair) //remove self from old chair
@@ -208,12 +210,13 @@ public class MouseManager : MonoBehaviour
                 {
                     selectedPerson.transform.position = selectedPerson.true_origin;
                 }
-                
+                selectedPerson.satisfied = false; //cannot be satisfied if not seated.
+
                 
             }
 
 
-
+            boardmanager.updateBoard();
             selectedPerson = null;
         }
     }
