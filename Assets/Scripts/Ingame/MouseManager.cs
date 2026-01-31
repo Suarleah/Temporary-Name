@@ -12,6 +12,8 @@ public class MouseManager : MonoBehaviour
     [SerializeField] private Vector2 infoPanelOffset;
     [SerializeField] private bool showInfo;
 
+    public BoardManager boardmanager;
+
     [Header("Assign this stuff!!")]
     [SerializeField] private GameObject infoPanel; private TextMeshProUGUI infoText;
 
@@ -41,10 +43,32 @@ public class MouseManager : MonoBehaviour
 
     }
 
-    void InfoPanel(PartyGoerBrain partyGoer)
+    void InfoPanel(PartyGoerBrain partyGoer) 
     {
         infoPanel.transform.position = new Vector3(mousePos.x + infoPanelOffset.x, mousePos.y + infoPanelOffset.y, 0);
-        // info panel text = partyGoer. blah blah
+
+        string text = "";
+        for (int i = 0; i < partyGoer.Wants.Count; i++) //display wants
+        {
+            if (text != "")
+            {
+                text += "\n";
+            }
+
+            switch (partyGoer.Wants[i])
+            {
+                
+                case PartyGoerBrain.want.drink_with_someone:
+                    text += "I wanna drink with someone!";
+                    break;
+            }
+        }
+        if (text == "")
+        {
+            text = "I have no preference";
+        }
+
+        infoPanel.GetComponentInChildren<TMP_Text>().text = text;
 
     }
 
