@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 public class BoardManager : MonoBehaviour
 {
+
     public List<TableBrain> tables;
+    public List<PartyGoerBrain> people;
+
+
 
     public void updateBoard()
     {
@@ -35,6 +39,19 @@ public class BoardManager : MonoBehaviour
                 }
             }
         }
+        for (int i = 0; i < people.Count; i++)
+        {
+            if (!people[i].satisfied)
+            {
+                return;
+            }
+        }
+        Win();
+    }
+
+    public void Win()
+    {
+        Debug.Log("Winned!");
     }
 
     //helper functions to check if person is satisfied
