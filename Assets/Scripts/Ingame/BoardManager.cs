@@ -30,6 +30,30 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.sit_with_someone_with_mood_happy:
                                 satisfied = satisfied && searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.happy);
                                 break;
+                            case PartyGoerBrain.Want.sit_with_someone_with_mood_neutral:
+                                satisfied = satisfied && searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.neutral);
+                                break;
+                            case PartyGoerBrain.Want.sit_with_someone_with_mood_sad:
+                                satisfied = satisfied && searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad);
+                                break;
+                            case PartyGoerBrain.Want.sit_with_someone_with_style_plain:
+                                satisfied = satisfied && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.plain);
+                                break;
+                            case PartyGoerBrain.Want.sit_with_someone_with_style_fancy:
+                                satisfied = satisfied && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.fancy);
+                                break;
+                            case PartyGoerBrain.Want.sit_with_someone_with_style_professional:
+                                satisfied = satisfied && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.professional);
+                                break;
+                            case PartyGoerBrain.Want.talk_with_someone:
+                                satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.talk_with_someone);
+                                break;
+                            case PartyGoerBrain.Want.eat_with_someone:
+                                satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.eat_with_someone);
+                                break;
+                            case PartyGoerBrain.Want.drink_with_someone:
+                                satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.drink_with_someone);
+                                break;
                             case PartyGoerBrain.Want.be_alone:
                                 satisfied = satisfied && !searchPeople(table.type, i, table.myChairs);
                                 break;

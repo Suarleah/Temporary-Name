@@ -57,10 +57,34 @@ public class MouseManager : MonoBehaviour
             switch (partyGoer.wants[i])
             {
                 case PartyGoerBrain.Want.sit_with_someone_with_mood_happy:
-                    text += "I wanna sit next to someone who's happy!";
+                    text += "I want to sit next to someone happy!";
+                    break;
+                case PartyGoerBrain.Want.sit_with_someone_with_mood_neutral:
+                    text += "I want to sit next to someone neutral!";
+                    break;
+                case PartyGoerBrain.Want.sit_with_someone_with_mood_sad:
+                    text += "I want to sit next to someone sad!";
+                    break;
+                case PartyGoerBrain.Want.sit_with_someone_with_style_plain:
+                    text += "I want to sit next to someone who dresses plainly!";
+                    break;
+                case PartyGoerBrain.Want.sit_with_someone_with_style_fancy:
+                    text += "I want to sit next to someone who dresses fancily!";
+                    break;
+                case PartyGoerBrain.Want.sit_with_someone_with_style_professional:
+                    text += "I want to sit next to someone who dresses professionally!!";
+                    break;
+                case PartyGoerBrain.Want.talk_with_someone:
+                    text += "I want to talk to someone!";
+                    break;
+                case PartyGoerBrain.Want.eat_with_someone:
+                    text += "I want to share food with somone!";
                     break;
                 case PartyGoerBrain.Want.drink_with_someone:
-                    text += "I wanna drink with someone!";
+                    text += "I want to drink with someone!!";
+                    break;
+                case PartyGoerBrain.Want.be_alone:
+                    text += "I want to be alone!";
                     break;
             }
         }
