@@ -84,7 +84,7 @@ public class BoardManager : MonoBehaviour
                                 satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.drink_with_someone);
                                 break;
                             case PartyGoerBrain.Want.partnered:
-                                satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.partnered);
+                                satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.partnered) || searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.phantom_of_the_opera));
                                 break;
                             case PartyGoerBrain.Want.be_alone:
                                 satisfied = satisfied && !searchPeople(table.type, i, table.myChairs);
@@ -124,6 +124,12 @@ public class BoardManager : MonoBehaviour
                                 break;
                             case PartyGoerBrain.Want.not_angry:
                                 satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry);
+                                break;
+                            case PartyGoerBrain.Want.phantom_of_the_opera:
+                                satisfied = satisfied && (TablePopulation(table) == person.limited_number_of_people_at_table_limit) && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.fancy);
+                                break;
+                            case PartyGoerBrain.Want.no_phantoms:
+                                satisfied = satisfied && (!searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.phantom_of_the_opera));
                                 break;
                         }
                     }
@@ -461,6 +467,11 @@ public class BoardManager : MonoBehaviour
                     break;
                 case (Mask.Type.want):
                     person.wants.Add(person.mask.myWant);
+                    break;
+                case (Mask.Type.lonely):
+                    person.wants = new List<PartyGoerBrain.Want>(); //removes all wants
+                    person.wants.Add(PartyGoerBrain.Want.be_alone);
+                    person.baseMood = PartyGoerBrain.Mood.sad;
                     break;
             }
 

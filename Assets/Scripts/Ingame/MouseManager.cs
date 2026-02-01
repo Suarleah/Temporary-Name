@@ -146,9 +146,13 @@ public class MouseManager : MonoBehaviour
                     text += "I want to assassinate Caesar.";
                     break;
                 case PartyGoerBrain.Want.not_angry:
-                    text += "I don't like angry people";
-                    text += "I want to assassinate Caesar." +
-                        "\n I want to sit nextto Caesar or a conspirator.";
+                    text += "I don't like angry people.";
+                    break;
+                case PartyGoerBrain.Want.phantom_of_the_opera:
+                    text += "I want to be the only one with Christine.";
+                    break;
+                case PartyGoerBrain.Want.no_phantoms:
+                    text += "I don't want to sit next to the phantom.";
                     break;
             }
         }

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class Mask : MonoBehaviour
 {
-    public enum Type {mood, style, want}
+    public enum Type {mood, style, want, lonely}
     public Type type;
 
     public PartyGoerBrain.Mood myMood;
