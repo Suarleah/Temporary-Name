@@ -82,7 +82,7 @@ public class MouseManager : MonoBehaviour
                     text += "I want to talk to someone!";
                     break;
                 case PartyGoerBrain.Want.eat_with_someone:
-                    text += "I want to share food with somone!";
+                    text += "I want to share food with someone!";
                     break;
                 case PartyGoerBrain.Want.drink_with_someone:
                     text += "I want to drink with someone!!";
@@ -127,8 +127,7 @@ public class MouseManager : MonoBehaviour
                     text += "I want everyone to be happy!";
                     break;
                 case PartyGoerBrain.Want.assassination:
-                    text += "I want to assassinate Caesar." +
-                        "\n I want to sit nextto Caesar or a conspirator.";
+                    text += "I want to assassinate Caesar.";
                     break;
                 case PartyGoerBrain.Want.not_angry:
                     text += "I don't like angry people";

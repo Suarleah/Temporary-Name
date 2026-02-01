@@ -117,7 +117,7 @@ public class BoardManager : MonoBehaviour
                                 satisfied = satisfied && checkSeatType(i, table.myChairs, ChairBrain.Type.wood);
                                 break;
                             case PartyGoerBrain.Want.assassination:
-                                satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.important) || searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.assassination));
+                                satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.important));
                                 break;
                             case PartyGoerBrain.Want.everyone_happy:
                                 satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry) && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad);
