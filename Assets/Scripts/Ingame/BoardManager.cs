@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
 
@@ -9,6 +10,8 @@ public class BoardManager : MonoBehaviour
     public List<PartyGoerBrain> people;
 
     public string nextLevel;
+    public float fadeDelay; // Time after everyone is done celebrating to fade
+    public float celebrateDelay; // Time in between each celebration
 
     private CameraFade cameraFade;
 
@@ -111,14 +114,21 @@ public class BoardManager : MonoBehaviour
                 return;
             }
         }
-        Win();
+       StartCoroutine(Win());
     }
-
-    public void Win()
-    {
-        // Debug.Log("Winned!");
-        cameraFade.FadeOut(nextLevel);
-    }
+    
+    private IEnumerator Win()
+        {
+            foreach (PartyGoerBrain person in people)
+            {
+                Animator anim = person.gameObject.GetComponentInChildren<Animator>();
+                anim.SetTrigger("win");
+                yield return new WaitForSeconds(celebrateDelay);
+            }
+            // Debug.Log("Winned!");
+            yield return new WaitForSeconds(fadeDelay);
+            cameraFade.FadeOut(nextLevel);
+        }
 
     //helper functions to check if person is satisfied
     public bool searchMood(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs, PartyGoerBrain.Mood mood)
