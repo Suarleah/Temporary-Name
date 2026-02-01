@@ -14,10 +14,13 @@ public class BoardManager : MonoBehaviour
     public float celebrateDelay = 0.2f; // Time in between each celebration
 
     private CameraFade cameraFade;
+    private SoundManager soundManager;
 
     private void Start()
     {
         cameraFade = FindFirstObjectByType<CameraFade>();
+        soundManager = FindFirstObjectByType<SoundManager>();
+        
         updateBoard();
     }
 
