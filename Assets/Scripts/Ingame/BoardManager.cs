@@ -59,6 +59,9 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.sit_with_someone_with_style_plain:
                                 satisfied = satisfied && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.plain);
                                 break;
+                            case PartyGoerBrain.Want.dont_sit_with_someone_with_style_plain:
+                                satisfied = satisfied && !searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.plain);
+                                break;
                             case PartyGoerBrain.Want.sit_with_someone_with_style_fancy:
                                 satisfied = satisfied && searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.fancy);
                                 break;
