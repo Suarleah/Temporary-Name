@@ -1638,7 +1638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087801897489740542, guid: bfd0ea3a83e74462bb27ffbc4966f30e, type: 3}
       propertyPath: nextLevel
-      value: Level 5
+      value: Oni
       objectReference: {fileID: 0}
     - target: {fileID: 9087801897489740542, guid: bfd0ea3a83e74462bb27ffbc4966f30e, type: 3}
       propertyPath: celebrateDelay

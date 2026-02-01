@@ -958,6 +958,14 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1043,6 +1051,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7102366717183661479, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3175,7 +3199,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4739028632962858880, guid: 31c7c3580725267458c48ab11c705e45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6125825965710860445, guid: 31c7c3580725267458c48ab11c705e45, type: 3}
       propertyPath: m_Camera
@@ -3461,7 +3485,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9087801897489740542, guid: bfd0ea3a83e74462bb27ffbc4966f30e, type: 3}
       propertyPath: nextLevel
-      value: Level 5
+      value: MainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 9087801897489740542, guid: bfd0ea3a83e74462bb27ffbc4966f30e, type: 3}
       propertyPath: celebrateDelay

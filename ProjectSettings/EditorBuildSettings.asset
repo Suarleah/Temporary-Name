@@ -20,6 +20,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level 3.unity
     guid: 453e1f2ed0e1642be86ecae2afa21fb9
+  - enabled: 1
+    path: Assets/Scenes/Level 4.unity
+    guid: 4990197791ac64ad099e4f6bd6c4b496
+  - enabled: 1
+    path: Assets/Scenes/Oni.unity
+    guid: f50781ef562734caf9fe96f59e964995
+  - enabled: 1
+    path: Assets/Scenes/Red_Mask.unity
+    guid: c41557c8a1a144a9f83cd2b624505f63
+  - enabled: 1
+    path: Assets/Scenes/Phantom.unity
+    guid: d38c69344afbe4d71b2aa49d1947c327
+  - enabled: 1
+    path: Assets/Scenes/Caesar.unity
+    guid: 9ed026e3d52f642c3886c70cfc22aca0
+  - enabled: 1
+    path: Assets/Scenes/Last_Supper.unity
+    guid: b1504b9250a05471bb60cb5e87edf1dd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
