@@ -569,7 +569,7 @@ public class BoardManager : MonoBehaviour
                 case (Mask.Type.lonely):
                     person.wants = new List<PartyGoerBrain.Want>(); //removes all wants
                     person.wants.Add(PartyGoerBrain.Want.be_alone);
-                    person.baseMood = PartyGoerBrain.Mood.sad;
+                    person.myMood = PartyGoerBrain.Mood.sad;
                     break;
                 case (Mask.Type.red):
                     person.myMood = PartyGoerBrain.Mood.neutral;
