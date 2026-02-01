@@ -3076,6 +3076,10 @@ PrefabInstance:
       propertyPath: 'baseWants.Array.data[1]'
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 5502450581890769764, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb82b2dda236975448ffecce442fd96a, type: 3}
     - target: {fileID: 8509019916780515352, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_Name
       value: Jesus
@@ -3086,6 +3090,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8948839403812249444, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: style_plain
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948839403812249444, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: mask_default
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8948839403812249444, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}

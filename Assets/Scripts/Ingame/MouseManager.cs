@@ -422,6 +422,11 @@ public class MouseManager : MonoBehaviour
                     } else // the selectedperson was still waiting for a seat
                     {
                         chairbrain.myPerson.satisfied = false;
+                        chairbrain.myPerson.drinking = false;
+                        chairbrain.myPerson.eating = false;
+                        chairbrain.myPerson.talking = false;
+
+
                         chairbrain.myPerson.currentChair = null;
                         chairbrain.myPerson.transform.SetParent(null);
                         chairbrain.myPerson.transform.position = chairbrain.myPerson.true_origin;
@@ -471,7 +476,9 @@ public class MouseManager : MonoBehaviour
                 }
                 selectedPerson.satisfied = false; //cannot be satisfied if not seated.
 
-                
+                selectedPerson.drinking = false;
+                selectedPerson.eating = false;
+                selectedPerson.talking = false;
             }
 
 
