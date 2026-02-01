@@ -580,5 +580,6 @@ public class BoardManager : MonoBehaviour
             }
 
         }
+        person.updateVisual();
     }
 }
