@@ -7,16 +7,16 @@ public class SoundManager : MonoBehaviour
     public AudioClip[] musicTracks;
     public AudioClip[] uiSounds;
 
-    [SerializeField] private AudioSource sfx;
-    [SerializeField] private AudioSource music;
-    
+    public AudioSource sfx;
+    public AudioSource music;
+
     void Start()
     {
         DontDestroyOnLoad(gameObject);
         PlayMusic(musicTracks[0]); // Might need to be commented out later
     }
 
-    
+
     public void PlaySound(AudioClip clip)
     {
         sfx.PlayOneShot(clip, 1);
