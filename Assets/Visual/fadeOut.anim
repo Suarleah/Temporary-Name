@@ -647,7 +647,7 @@ AnimationClip:
   m_Events:
   - time: 1
     functionName: LoadScene
-    data: Test
+    data: Level 2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

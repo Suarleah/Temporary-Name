@@ -6,7 +6,7 @@ public class CameraFade : MonoBehaviour
 {
     private Image fadePanel;
     private Animator animator;
-    private int sceneNumber;
+    private string sceneName;
     void Start()
     {
         fadePanel = GetComponentInChildren<Image>();
@@ -17,14 +17,19 @@ public class CameraFade : MonoBehaviour
     }
 
 
-    public void FadeOut(string sceneName)
+    public void FadeOut(string s)
     {
-        animator.SetTrigger("fadeOut"); // This animations calls LoadScene at frame 60
+        if (s != null)
+        {
+            sceneName = s;
+            animator.SetTrigger("fadeOut"); // This animations calls LoadScene at frame 60
+        }
+
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene()
     {
-        if (sceneName != null) 
+        if (sceneName != null)
         {
             SceneManager.LoadScene(sceneName);
         }
@@ -32,6 +37,6 @@ public class CameraFade : MonoBehaviour
 
 
 
-    
+
 
 }

@@ -8,8 +8,13 @@ public class BoardManager : MonoBehaviour
     public List<TableBrain> tables;
     public List<PartyGoerBrain> people;
 
+    public string nextLevel;
+
+    private CameraFade cameraFade;
+
     private void Start()
     {
+        cameraFade = FindFirstObjectByType<CameraFade>(); 
         updateBoard();
     }
 
@@ -111,7 +116,8 @@ public class BoardManager : MonoBehaviour
 
     public void Win()
     {
-        Debug.Log("Winned!");
+        // Debug.Log("Winned!");
+        cameraFade.FadeOut(nextLevel);
     }
 
     //helper functions to check if person is satisfied
