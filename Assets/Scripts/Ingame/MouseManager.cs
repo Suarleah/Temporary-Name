@@ -111,6 +111,12 @@ public class MouseManager : MonoBehaviour
                 case PartyGoerBrain.Want.wood_seat:
                     text += "I want to sit on a wooden seat!";
                     break;
+                case PartyGoerBrain.Want.drink_wine: //jesus exclusive
+                    text += "I will drink wine";
+                    break;
+                case PartyGoerBrain.Want.center_of_table: //jesus exclusive
+                    text += "I will sit in the center of the table";
+                    break;
             }
         }
         if (text == "")
