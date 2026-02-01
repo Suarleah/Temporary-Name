@@ -10,14 +10,14 @@ public class BoardManager : MonoBehaviour
     public List<PartyGoerBrain> people;
 
     public string nextLevel;
-    public float fadeDelay; // Time after everyone is done celebrating to fade
-    public float celebrateDelay; // Time in between each celebration
+    public float fadeDelay = 0.5f; // Time after everyone is done celebrating to fade
+    public float celebrateDelay = 0.2f; // Time in between each celebration
 
     private CameraFade cameraFade;
 
     private void Start()
     {
-        cameraFade = FindFirstObjectByType<CameraFade>(); 
+        cameraFade = FindFirstObjectByType<CameraFade>();
         updateBoard();
     }
 

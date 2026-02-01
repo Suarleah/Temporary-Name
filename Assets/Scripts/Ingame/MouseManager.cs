@@ -94,7 +94,7 @@ public class MouseManager : MonoBehaviour
                     text += "I want to sit at a table with exactly " + partyGoer.limited_number_of_people_at_table_limit + " people!";
                     break;
                 case PartyGoerBrain.Want.sit_next_to_only_x_people:
-                    text += "I want to sit next to exactly " +partyGoer.sit_next_to_only_x_people_x + " people!";
+                    text += "I want to interact with exactly " +partyGoer.sit_next_to_only_x_people_x + " people!";
                     break;
                 case PartyGoerBrain.Want.circle_table:
                     text += "I want to sit at a circle table!";
