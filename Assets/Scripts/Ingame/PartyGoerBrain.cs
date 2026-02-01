@@ -57,11 +57,6 @@ public class PartyGoerBrain : MonoBehaviour
     {
         myMood = baseMood;
         myStyle = baseStyle;
-        wants = new List<Want>();
-        for (int i = 0; i < wants.Count; i++)
-        {
-            wants.Add(baseWants[i]);
-        }
         true_origin = transform.position; //record position when scene starts as true origin
         updateVisual();
     }
