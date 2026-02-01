@@ -147,6 +147,7 @@ public class BoardManager : MonoBehaviour
             {
                 Animator anim = person.gameObject.GetComponentInChildren<Animator>();
                 anim.SetTrigger("win");
+                soundManager.PlaySound(soundManager.soundEffects[0]);
                 yield return new WaitForSeconds(celebrateDelay);
             }
             // Debug.Log("Winned!");
