@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SettingsManager : MonoBehaviour
 {
     private SoundManager soundManager;
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         soundManager = FindFirstObjectByType<SoundManager>();
     }
 
@@ -22,5 +24,10 @@ public class SettingsManager : MonoBehaviour
     public void ChangeMusic(Single volume)
     {
         soundManager.music.volume = volume;
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
