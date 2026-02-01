@@ -114,6 +114,30 @@ public class BoardManager : MonoBehaviour
     //helper functions to check if person is satisfied
     public bool searchMood(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs, PartyGoerBrain.Mood mood)
     {
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null && chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson.myMood == mood)
+            {
+                return true;
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {
+                if (chairs[chairIndex - 1] && chairs[chairIndex-1].myPerson.myMood == mood)
+                {
+                    return true;
+                }
+            }
+            if (chairIndex != chairs.Length-1 && chairIndex != chairs.Length / 2-1)
+            {
+                if (chairs[chairIndex + 1] && chairs[chairIndex + 1].myPerson.myMood == mood)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+            
+        }
         if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson != null && chairs[(chairIndex -1 + chairs.Length) % chairs.Length].myPerson.myMood == mood)
         {
             return true;
@@ -122,18 +146,36 @@ public class BoardManager : MonoBehaviour
         {
             return true;
         }
-        if (tableType == TableBrain.Type.square)
-        {
-            if (chairs[(chairIndex - chairs.Length/2) % chairs.Length].myPerson != null && chairs[(chairIndex + chairs.Length/2) % chairs.Length].myPerson.myMood == mood)
-            {
-                return true;
-            }
-        }
+        
         return false;
     }
 
     public bool searchStyle(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs, PartyGoerBrain.Style style)
     {
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null && chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson.myStyle == style)
+            {
+                return true;
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {
+                if (chairs[chairIndex - 1] && chairs[chairIndex - 1].myPerson.myStyle == style)
+                {
+                    return true;
+                }
+            }
+            if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
+            {
+                if (chairs[chairIndex + 1] && chairs[chairIndex + 1].myPerson.myStyle == style)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
         if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson!= null && chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson.myStyle == style)
         {
             return true;
@@ -142,18 +184,59 @@ public class BoardManager : MonoBehaviour
         {
             return true;
         }
-        if (tableType == TableBrain.Type.square)
-        {
-            if (chairs[(chairIndex + chairs.Length/2) % chairs.Length].myPerson != null && chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson.myStyle == style)
-            {
-                return true;
-            }
-        }
         return false;
+        
     }
 
     public bool searchWants(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs, PartyGoerBrain.Want want)
     {
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson)
+            {
+
+                List<PartyGoerBrain.Want> curWants = chairs[(chairIndex + chairs.Length/2) % chairs.Length].myPerson.wants;
+                for (int i = 0; i < curWants.Count; i++)
+                {
+                    if (curWants[i] == want)
+                    {
+                        return true;
+                    }
+                }
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {   if (chairs[chairIndex - 1].myPerson)
+                {
+                    List<PartyGoerBrain.Want> curWants = chairs[chairIndex - 1].myPerson.wants;
+                    for (int i = 0; i < curWants.Count; i++)
+                    {
+                        if (curWants[i] == want)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                
+            }
+            if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
+            {
+                if (chairs[chairIndex + 1].myPerson)
+                {
+                    List<PartyGoerBrain.Want> curWants = chairs[chairIndex + 1].myPerson.wants;
+                    for (int i = 0; i < curWants.Count; i++)
+                    {
+                        if (curWants[i] == want)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                
+            }
+
+            return false;
+
+        }
         if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson)
         {
             List<PartyGoerBrain.Want> curWants = chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson.wants;
@@ -178,25 +261,37 @@ public class BoardManager : MonoBehaviour
             }
         }
 
-        if (tableType == TableBrain.Type.square)
-        {
-            if (chairs[(chairIndex + chairs.Length/2) % chairs.Length].myPerson)
-            {
-                List<PartyGoerBrain.Want> curWants = chairs[(chairIndex + chairs.Length/2) % chairs.Length].myPerson.wants;
-                for (int i = 0; i < curWants.Count; i++)
-                {
-                    if (curWants[i] == want)
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
+        
         return false;
     }
 
     public bool searchPeople(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs)//just checks if people exist
     {
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null)
+            {
+                return true;
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {
+                if (chairs[chairIndex - 1].myPerson)
+                {
+                    return true;
+                }
+               
+            }
+            if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
+            {
+                if (chairs[chairIndex + 1].myPerson)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
         if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson != null)
         {
             return true;
@@ -205,13 +300,7 @@ public class BoardManager : MonoBehaviour
         {
             return true;
         }
-        if (tableType == TableBrain.Type.square)
-        {
-            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null)
-            {
-                return true;
-            }
-        }
+        
 
         return false;
     }
@@ -260,6 +349,25 @@ public class BoardManager : MonoBehaviour
     public int CountNeighbors(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs)//just checks if people exist
     {
         int sum = 0;
+
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null)
+            {
+                sum++;
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {
+                sum++;
+            }
+            if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
+            {
+                sum++;
+            }
+
+            return sum;
+
+        }
         if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson != null)
         {
             sum++;
