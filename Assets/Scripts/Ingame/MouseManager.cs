@@ -237,7 +237,7 @@ public class MouseManager : MonoBehaviour
                     text += "I don't want anyone around me to be sad!";
                     break;
                 case PartyGoerBrain.Want.safe:
-                    text += "I want to keep everyone safe!";
+                    text += "I want to keep everyone away from evil spirits!";
                     break;
             }
         }
