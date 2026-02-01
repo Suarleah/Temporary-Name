@@ -53,12 +53,19 @@ public class PartyGoerBrain : MonoBehaviour
     //public PartyGoerBrain[] myNeighbors;
     public ChairBrain currentChair;
 
+    [Header("Icon Animators")]
+
+    [SerializeField] private Animator wineAnim;
+    [SerializeField] private Animator utensilAnim;
+    [SerializeField] private Animator talkAnim;
+
     private void Start()
     {
         myMood = baseMood;
         myStyle = baseStyle;
         true_origin = transform.position; //record position when scene starts as true origin
         updateVisual();
+        
     }
 
     private void Update()
@@ -76,11 +83,11 @@ public class PartyGoerBrain : MonoBehaviour
         {
             if (drinking)
             {
-                //if their want is fulfilled, make the icon brighter, and move a little bit as though they're cheersing
+                wineAnim.SetBool("cheers", true);
             }
             else
             {
-                //else, the icon is darkened and still
+               wineAnim.SetBool("cheers", false);
             }
         }
 
