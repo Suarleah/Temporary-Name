@@ -358,11 +358,18 @@ public class BoardManager : MonoBehaviour
             }
             if (chairIndex != 0 && chairIndex != chairs.Length / 2)
             {
-                sum++;
+                if (chairs[chairIndex-1].myPerson)
+                {
+                    sum++;
+                }
+                
             }
             if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
             {
-                sum++;
+                if (chairs[chairIndex + 1].myPerson)
+                {
+                    sum++;
+                }
             }
 
             return sum;
