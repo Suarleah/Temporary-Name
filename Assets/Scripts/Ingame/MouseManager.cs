@@ -69,6 +69,9 @@ public class MouseManager : MonoBehaviour
                 case PartyGoerBrain.Want.sit_with_someone_with_style_plain:
                     text += "I want to sit next to someone who dresses plainly!";
                     break;
+                case PartyGoerBrain.Want.dont_sit_with_someone_with_style_plain:
+                    text += "I DONT want to sit next to someone who dresses plainly!";
+                    break;
                 case PartyGoerBrain.Want.sit_with_someone_with_style_fancy:
                     text += "I want to sit next to someone who dresses fancily!";
                     break;
