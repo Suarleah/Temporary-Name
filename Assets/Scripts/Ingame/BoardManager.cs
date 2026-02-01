@@ -120,7 +120,7 @@ public class BoardManager : MonoBehaviour
                                 satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.important));
                                 break;
                             case PartyGoerBrain.Want.everyone_happy:
-                                satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry) && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad);
+                                satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry) && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad) && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.neutral);
                                 break;
                             case PartyGoerBrain.Want.not_angry:
                                 satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry);
@@ -130,6 +130,12 @@ public class BoardManager : MonoBehaviour
                                 break;
                             case PartyGoerBrain.Want.no_phantoms:
                                 satisfied = satisfied && (!searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.phantom_of_the_opera));
+                                break;
+                            case PartyGoerBrain.Want.kill_red_mask:
+                                satisfied = satisfied && (searchMask(table.type, i, table.myChairs));
+                                break;
+                            case PartyGoerBrain.Want.dont_sit_with_someone_with_style_professional:
+                                satisfied = satisfied && !searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.professional);
                                 break;
                         }
                     }
@@ -444,6 +450,62 @@ public class BoardManager : MonoBehaviour
         return sum;
     }
 
+    public bool searchMask(TableBrain.Type tableType, int chairIndex, ChairBrain[] chairs)//just checks if people exist
+    {
+        if (tableType == TableBrain.Type.square)
+        {
+            if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson != null)
+            {
+                if (chairs[(chairIndex + chairs.Length / 2) % chairs.Length].myPerson.mask != null)
+                {
+                    return true;
+                }
+               
+            }
+            if (chairIndex != 0 && chairIndex != chairs.Length / 2)
+            {
+                if (chairs[chairIndex - 1].myPerson)
+                {
+                    if (chairs[chairIndex - 1].myPerson.mask)
+                    {
+                        return true;
+                    }
+                }
+
+            }
+            if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
+            {
+                if (chairs[chairIndex + 1].myPerson)
+                {
+                    if (chairs[chairIndex + 1].myPerson.mask)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+
+        }
+        if (chairs[(chairIndex - 1 + chairs.Length) % chairs.Length].myPerson != null)
+        {
+            if (chairs[(chairIndex - 1+chairs.Length) % chairs.Length].myPerson.mask)
+            {
+                return true;
+            }
+        }
+        if (chairs[(chairIndex + 1) % chairs.Length].myPerson != null)
+        {
+            if (chairs[(chairIndex + 1 + chairs.Length) % chairs.Length].myPerson.mask)
+            {
+                return true;
+            }
+        }
+
+
+        return false;
+    }
+
 
     public void ApplyMask(PartyGoerBrain person)
     {
@@ -472,6 +534,9 @@ public class BoardManager : MonoBehaviour
                     person.wants = new List<PartyGoerBrain.Want>(); //removes all wants
                     person.wants.Add(PartyGoerBrain.Want.be_alone);
                     person.baseMood = PartyGoerBrain.Mood.sad;
+                    break;
+                case (Mask.Type.red):
+                    person.myMood = PartyGoerBrain.Mood.neutral;
                     break;
             }
 

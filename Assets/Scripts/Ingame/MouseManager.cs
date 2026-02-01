@@ -131,28 +131,34 @@ public class MouseManager : MonoBehaviour
                     text += "I want to sit on a wooden seat!";
                     break;
                 case PartyGoerBrain.Want.drink_wine: //jesus exclusive
-                    text += "I will drink wine.";
+                    text += "I will drink fine wine.";
                     break;
                 case PartyGoerBrain.Want.center_of_table: //jesus exclusive
                     text += "I will sit in the center of the table.";
                     break;
                 case PartyGoerBrain.Want.important: //caesar exclusive
-                    text += "I will sit in the most important seat.";
+                    text += "I will sit in the most important seat!";
                     break;
                 case PartyGoerBrain.Want.everyone_happy:
                     text += "I want everyone to be happy!";
                     break;
                 case PartyGoerBrain.Want.assassination:
-                    text += "I want to assassinate Caesar.";
+                    text += "I want to assassinate Caesar!";
                     break;
                 case PartyGoerBrain.Want.not_angry:
-                    text += "I don't like angry people.";
+                    text += "I don't want to sit next to angry people!";
                     break;
                 case PartyGoerBrain.Want.phantom_of_the_opera:
-                    text += "I want to be the only one with Christine.";
+                    text += "I want to be the only one with Christine!";
                     break;
                 case PartyGoerBrain.Want.no_phantoms:
-                    text += "I don't want to sit next to the phantom.";
+                    text += "I don't want to sit next to the phantom!";
+                    break;
+                case PartyGoerBrain.Want.kill_red_mask:
+                    text += "I want to kill the one wearing the red mask!";
+                    break;
+                case PartyGoerBrain.Want.dont_sit_with_someone_with_style_professional:
+                    text += "I DONT want to sit next to someone who dresses professionally!!";
                     break;
             }
         }
