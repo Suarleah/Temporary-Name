@@ -124,7 +124,6 @@ public class MouseManager : MonoBehaviour
 
     void RayCasting()
     {
-        
         Collider2D thingHovering = Physics2D.OverlapPoint(mousePos);
 
         if (thingHovering != null && thingHovering.GetComponent<PartyGoerBrain>() != null) //if a person, show info about them :)
@@ -287,8 +286,9 @@ public class MouseManager : MonoBehaviour
                         selectedPerson.transform.localPosition = new Vector2(0, 1); // Sit down....
                         selectedPerson.currentChair = chairbrain;
                         chairbrain.myPerson = selectedPerson;
-                    } else // the selectedperson was still waiting in a seat
+                    } else // the selectedperson was still waiting for a seat
                     {
+                        chairbrain.myPerson.satisfied = false;
                         chairbrain.myPerson.currentChair = null;
                         chairbrain.myPerson.transform.SetParent(null);
                         chairbrain.myPerson.transform.position = chairbrain.myPerson.true_origin;
