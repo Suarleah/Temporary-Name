@@ -43,6 +43,79 @@ public class MouseManager : MonoBehaviour
 
     }
 
+    void InfoPanel(Mask mask)
+    {
+        infoPanel.transform.position = new Vector3(mousePos.x + infoPanelOffset.x, mousePos.y + infoPanelOffset.y, 0);
+
+        if (mousePos.x > 0)
+        {
+            infoPanelOffset.x = -4;
+        }
+        else
+        {
+            infoPanelOffset.x = 1;
+        }
+
+        if (mousePos.y > 0)
+        {
+            infoPanelOffset.y = -3;
+        }
+        else
+        {
+            infoPanelOffset.y = 1;
+        }
+
+        string text = "";
+        if (mask.type == Mask.Type.mood)
+        {
+            if (mask.myMood == PartyGoerBrain.Mood.happy)
+            {
+                text = "Happy Mask";
+            }
+            if (mask.myMood == PartyGoerBrain.Mood.neutral)
+            {
+                text = "Neutral Mask";
+            }
+            if (mask.myMood == PartyGoerBrain.Mood.sad)
+            {
+                text = "Sad Mask";
+            }
+            if (mask.myMood == PartyGoerBrain.Mood.angry)
+            {
+                text = "Angry Mask";
+            }
+        }
+        if (mask.type == Mask.Type.style)
+        {
+            if (mask.myStyle == PartyGoerBrain.Style.plain)
+            {
+                text = "Plain Mask";
+            }
+            if (mask.myStyle == PartyGoerBrain.Style.professional)
+            {
+                text = "Professional Mask";
+            }
+            if (mask.myStyle == PartyGoerBrain.Style.fancy)
+            {
+                text = "Fancy Mask";
+            }
+        }
+        if (mask.type == Mask.Type.lonely)
+        {
+            text = "Lonely Mask";
+        }
+
+        if (mask.type == Mask.Type.red)
+        {
+            text = "Red Mask";
+        }
+        if (mask.type == Mask.Type.oni)
+        {
+            text = "Oni Mask";
+        }
+        infoPanel.GetComponentInChildren<TMP_Text>().text = text;
+    }
+
     void InfoPanel(PartyGoerBrain partyGoer) 
     {
         infoPanel.transform.position = new Vector3(mousePos.x + infoPanelOffset.x, mousePos.y + infoPanelOffset.y, 0);
@@ -172,7 +245,6 @@ public class MouseManager : MonoBehaviour
         {
             text = "I have no preference";
         }
-
         infoPanel.GetComponentInChildren<TMP_Text>().text = text;
 
     }
@@ -185,7 +257,13 @@ public class MouseManager : MonoBehaviour
         {
             showInfo = true;
             InfoPanel(thingHovering.GetComponent<PartyGoerBrain>());
-        } else
+        }
+        else if(thingHovering != null && thingHovering.GetComponent<Mask>() != null) //if a mask, show info about it :)
+        {
+            showInfo = true;
+            InfoPanel(thingHovering.GetComponent<Mask>());
+        } 
+        else
         {
             showInfo = false;
         }
@@ -269,10 +347,10 @@ public class MouseManager : MonoBehaviour
                     {
                         selectedMask.transform.parent.GetComponent<PartyGoerBrain>().mask = person.mask; //current person gets their new mask
                         person.mask.transform.SetParent(selectedMask.transform.parent);
-                        person.mask.transform.localPosition = new Vector2(0, 1);
+                        person.mask.transform.localPosition = new Vector2(0, 0);
 
                         selectedMask.transform.SetParent(person.transform, false);
-                        selectedMask.transform.localPosition = new Vector2(0, 1);
+                        selectedMask.transform.localPosition = new Vector2(0, 0);
                         person.mask = selectedMask;
                     }
                     else //selected mask is unused
@@ -283,7 +361,7 @@ public class MouseManager : MonoBehaviour
                         
 
                         selectedMask.transform.SetParent(person.transform, false);
-                        selectedMask.transform.localPosition = new Vector2(0, 1); // Sit down....
+                        selectedMask.transform.localPosition = new Vector2(0, 0); // Sit down....
                         person.mask = selectedMask;
 
 
@@ -297,7 +375,7 @@ public class MouseManager : MonoBehaviour
                     }
                     //put on mask without issue
                     selectedMask.transform.SetParent(person.transform);
-                    selectedMask.transform.localPosition = new Vector2(0, 1);
+                    selectedMask.transform.localPosition = new Vector2(0, 0);
                     person.mask = selectedMask;
                 }
 
