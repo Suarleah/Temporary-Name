@@ -119,6 +119,12 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.assassination:
                                 satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.important) || searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.assassination));
                                 break;
+                            case PartyGoerBrain.Want.everyone_happy:
+                                satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry) && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad);
+                                break;
+                            case PartyGoerBrain.Want.not_angry:
+                                satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.angry);
+                                break;
                         }
                     }
                     person.satisfied = satisfied;
