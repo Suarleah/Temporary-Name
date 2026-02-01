@@ -185,6 +185,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1398755147570067962, guid: 5bc1e8c63cce14e1eb737b5e4ff6db64, type: 3}
   m_PrefabInstance: {fileID: 7472323}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &10597837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 134333938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &29465431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -255,6 +260,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556975398}
     m_Modifications:
+    - target: {fileID: 1479750339547020647, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3201791758515660986, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.62
@@ -303,6 +312,10 @@ PrefabInstance:
       propertyPath: baseStyle
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: eatingvisual
+      value: 
+      objectReference: {fileID: 1331293639}
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: baseWants.Array.size
       value: 1
@@ -397,6 +410,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: drinkingvisual
+      value: 
+      objectReference: {fileID: 10597837}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: baseWants.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -412,6 +429,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9fc1f2061074a4a30b747ca48e57529e, type: 3}
+    - target: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8509019916780515352, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_Name
       value: Conspirator
@@ -483,6 +504,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: talkingvisual
+      value: 
+      objectReference: {fileID: 884017266}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: drinkingvisual
+      value: 
+      objectReference: {fileID: 751914806}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: baseWants.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -502,9 +531,17 @@ PrefabInstance:
       propertyPath: limited_number_of_people_at_table_limit
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8509019916780515352, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_Name
       value: Angry PartyGoer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946201104136686486, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1444,6 +1481,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d4e6f1a6912345468b1aaedc22976be, type: 3}
+--- !u!1 &751914806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 172581760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &773257850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1517,6 +1559,16 @@ PrefabInstance:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5027906839983345047, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
   m_PrefabInstance: {fileID: 475481147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &884017266 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8946201104136686486, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 172581760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1005890568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1479750339547020647, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 1901770483}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1039510535 stripped
 MonoBehaviour:
@@ -1674,6 +1726,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: drinkingvisual
+      value: 
+      objectReference: {fileID: 1575289025}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: baseWants.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1688,6 +1744,10 @@ PrefabInstance:
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: 'baseWants.Array.data[2]'
       value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8509019916780515352, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_Name
@@ -1714,6 +1774,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b0f7f85a76b5c4790e40e8a30c3c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyGoerBrain
+--- !u!1 &1209632711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8946201104136686486, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 1901770483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1247505394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9087801897489740542, guid: bfd0ea3a83e74462bb27ffbc4966f30e, type: 3}
@@ -1736,6 +1801,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b0f7f85a76b5c4790e40e8a30c3c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyGoerBrain
+--- !u!1 &1331293639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1479750339547020647, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 43930982}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1575289025 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6918662910068497924, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+  m_PrefabInstance: {fileID: 1189239383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1613164482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2089,6 +2164,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 556975398}
     m_Modifications:
+    - target: {fileID: 1479750339547020647, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3201791758515660986, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.85
@@ -2138,6 +2217,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: eatingvisual
+      value: 
+      objectReference: {fileID: 1005890568}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: talkingvisual
+      value: 
+      objectReference: {fileID: 1209632711}
+    - target: {fileID: 4408418261243249472, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: baseWants.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -2156,6 +2243,10 @@ PrefabInstance:
     - target: {fileID: 8509019916780515352, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
       propertyPath: m_Name
       value: PartyGoer (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8946201104136686486, guid: 1bea1c818598a2d4aa75ff6565d6de83, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2192,7 +2283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4739028632962858880, guid: 31c7c3580725267458c48ab11c705e45, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6125825965710860445, guid: 31c7c3580725267458c48ab11c705e45, type: 3}
       propertyPath: m_Camera
