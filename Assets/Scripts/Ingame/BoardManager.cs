@@ -95,6 +95,12 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.end_of_a_table:
                                 satisfied = satisfied && checkSeatAttribute(i, table.myChairs, ChairBrain.Attribute.end_of_table);
                                 break;
+                            case PartyGoerBrain.Want.drink_wine: //jesus exclusive
+                                satisfied = satisfied && checkSeatAttribute(i, table.myChairs, ChairBrain.Attribute.wine);
+                                break;
+                            case PartyGoerBrain.Want.center_of_table: //jesus exclusive
+                                satisfied = satisfied && checkSeatAttribute(i, table.myChairs, ChairBrain.Attribute.center_of_table);
+                                break;
                             case PartyGoerBrain.Want.soft_seat:
                                 satisfied = satisfied && checkSeatType(i, table.myChairs, ChairBrain.Type.soft);
                                 break;
@@ -141,14 +147,14 @@ public class BoardManager : MonoBehaviour
             }
             if (chairIndex != 0 && chairIndex != chairs.Length / 2)
             {
-                if (chairs[chairIndex - 1] && chairs[chairIndex-1].myPerson.myMood == mood)
+                if (chairs[chairIndex - 1].myPerson  && chairs[chairIndex-1].myPerson.myMood == mood)
                 {
                     return true;
                 }
             }
             if (chairIndex != chairs.Length-1 && chairIndex != chairs.Length / 2-1)
             {
-                if (chairs[chairIndex + 1] && chairs[chairIndex + 1].myPerson.myMood == mood)
+                if (chairs[chairIndex + 1].myPerson && chairs[chairIndex + 1].myPerson.myMood == mood)
                 {
                     return true;
                 }
@@ -179,14 +185,14 @@ public class BoardManager : MonoBehaviour
             }
             if (chairIndex != 0 && chairIndex != chairs.Length / 2)
             {
-                if (chairs[chairIndex - 1] && chairs[chairIndex - 1].myPerson.myStyle == style)
+                if (chairs[chairIndex - 1].myPerson && chairs[chairIndex - 1].myPerson.myStyle == style)
                 {
                     return true;
                 }
             }
             if (chairIndex != chairs.Length - 1 && chairIndex != chairs.Length / 2 - 1)
             {
-                if (chairs[chairIndex + 1] && chairs[chairIndex + 1].myPerson.myStyle == style)
+                if (chairs[chairIndex + 1].myPerson && chairs[chairIndex + 1].myPerson.myStyle == style)
                 {
                     return true;
                 }
