@@ -8,7 +8,10 @@ public class BoardManager : MonoBehaviour
     public List<TableBrain> tables;
     public List<PartyGoerBrain> people;
 
-
+    private void Start()
+    {
+        updateBoard();
+    }
 
     public void updateBoard()
     {
