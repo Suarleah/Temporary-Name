@@ -120,6 +120,9 @@ public class MouseManager : MonoBehaviour
                 case PartyGoerBrain.Want.center_of_table: //jesus exclusive
                     text += "I will sit in the center of the table";
                     break;
+                case PartyGoerBrain.Want.important: //caesar exclusive
+                    text += "I will sit in the most important seat";
+                    break;
             }
         }
         if (text == "")

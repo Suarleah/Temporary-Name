@@ -47,6 +47,9 @@ public class BoardManager : MonoBehaviour
                     {
                         switch (person.wants[x])
                         {
+                            case PartyGoerBrain.Want.important:
+                                satisfied = satisfied && (checkSeatAttribute(i, table.myChairs, ChairBrain.Attribute.center_of_table));
+                                break;
                             case PartyGoerBrain.Want.sit_with_someone_with_mood_happy:
                                 satisfied = satisfied && searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.happy);
                                 break;
