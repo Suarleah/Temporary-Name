@@ -55,6 +55,7 @@ public class PartyGoerBrain : MonoBehaviour
     private void Start()
     {
         true_origin = transform.position; //record position when scene starts as true origin
+        updateVisual();
     }
 
     private void Update()
