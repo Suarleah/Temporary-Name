@@ -26,8 +26,4 @@ public class SettingsManager : MonoBehaviour
         soundManager.music.volume = volume;
     }
 
-    public void Menu()
-    {
-        SceneManager.LoadScene(0);
-    }
 }
