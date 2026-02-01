@@ -9,6 +9,7 @@ public class MouseManager : MonoBehaviour
     [Header("Only Visible for Debugging")]
     [SerializeField] private Vector2 mousePos;
     [SerializeField] private PartyGoerBrain selectedPerson;
+    [SerializeField] private Mask selectedMask;
     [SerializeField] private Vector2 infoPanelOffset;
     [SerializeField] private bool showInfo;
 
@@ -137,12 +138,20 @@ public class MouseManager : MonoBehaviour
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (thingHovering != null && thingHovering.GetComponent<PartyGoerBrain>() != null)
+            if (thingHovering != null && thingHovering.GetComponent<Mask>() != null)
+            {
+                selectedMask = thingHovering.GetComponent<Mask>();
+
+                BoxCollider2D blockRaycasts = selectedMask.GetComponent<BoxCollider2D>();
+            }
+            else if (thingHovering != null && thingHovering.GetComponent<PartyGoerBrain>() != null)
             {
                 selectedPerson = thingHovering.GetComponent<PartyGoerBrain>();
 
                 BoxCollider2D blockRaycasts = selectedPerson.GetComponent<BoxCollider2D>();
             }
+
+
         }
 
         if (Mouse.current.leftButton.isPressed)
@@ -151,43 +160,112 @@ public class MouseManager : MonoBehaviour
             {
                selectedPerson.transform.position = mousePos;
             }
-           
-            
+
+            if (selectedMask)
+            {
+                selectedMask.transform.position = mousePos;
+            }
+
+
         }
 
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
 
-            if (!selectedPerson) // no selected person = do nothing
+            if (!selectedPerson && !selectedMask) // no selected object = do nothing
             {
                 return;
             }
             GameObject chair = null;
+            GameObject maskTarget = null;
             //bool waiting = false;
             //preferably change it so the overlap is around the person instead (more intuitive but can be done later)
-            List<Collider2D> potentialchairs = new List<Collider2D>(); //should only be 1 at any given time
-            Physics2D.OverlapCollider(selectedPerson.GetComponent<BoxCollider2D>(), potentialchairs); // doesnt work unless nothing in the scene has a hitbox except chairs peoople, waiting are
-            for (int i = 0; i < potentialchairs.Count; i++)
+            List<Collider2D> objects = new List<Collider2D>(); //should only be 1 at any given time
+            if (selectedMask)
             {
-                if (potentialchairs[i].transform.GetComponent<ChairBrain>() != null) // if it has a chair brain it is a chair
+                Physics2D.OverlapCollider(selectedMask.GetComponent<BoxCollider2D>(), objects);
+            } else //selected person
+            {
+                Physics2D.OverlapCollider(selectedPerson.GetComponent<BoxCollider2D>(), objects);
+            }
+            
+            for (int i = 0; i < objects.Count; i++)
+            {
+                if (objects[i].transform.GetComponent<ChairBrain>() != null) // if it has a chair brain it is a chair
                 {
-                   chair = potentialchairs[i].transform.gameObject;
+                   chair = objects[i].transform.gameObject;
                 }
-                /*if (potentialchairs[i].transform.tag == "Waiting") // if it has a chair brain it is a chair
+                if (objects[i].transform.GetComponent<PartyGoerBrain>() != null) // if it has a partygoer brain, you can put a mask on it.
                 {
-                    waiting = true;
-                    break;
-                }*/
+                    maskTarget = objects[i].transform.gameObject;
+                }
+
             }
              
            
 
                 //Physics2D.OverlapPoint(mousePos, 8).gameObject; // 8 as in the layer 3 which is chairs only
             // This line makes an error but not a bad one ^^^^^
+            if (maskTarget != null && selectedMask)
+            {
+                PartyGoerBrain person = maskTarget.GetComponent<PartyGoerBrain>();
+                if (person.mask) //swap places if they're already wearing a mask
+                {
+                    if (selectedMask.transform.parent) //mask is already on soemone
+                    {
+                        selectedMask.transform.parent.GetComponent<PartyGoerBrain>().mask = person.mask; //current person gets their new mask
+                        person.mask.transform.SetParent(selectedMask.transform.parent);
+                        person.mask.transform.localPosition = new Vector2(0, 1);
 
-            
+                        selectedMask.transform.SetParent(person.transform, false);
+                        selectedMask.transform.localPosition = new Vector2(0, 1);
+                        person.mask = selectedMask;
+                    }
+                    else //selected mask is unused
+                    {
+                        Mask theirmask = person.mask;
+                        theirmask.transform.SetParent(null);
+                        theirmask.transform.position = theirmask.true_origin;
+                        
 
-            if (chair != null)// if chair is already taken
+                        selectedMask.transform.SetParent(person.transform, false);
+                        selectedMask.transform.localPosition = new Vector2(0, 1); // Sit down....
+                        person.mask = selectedMask;
+
+
+                    }
+                } else
+                {
+                    
+                    if (selectedMask.transform.parent) // if mask is already on someone
+                    {
+                        selectedMask.transform.parent.GetComponent<PartyGoerBrain>().mask = null;// take mask off
+                    }
+                    //put on mask without issue
+                    selectedMask.transform.SetParent(person.transform);
+                    selectedMask.transform.localPosition = new Vector2(0, 1);
+                    person.mask = selectedMask;
+                }
+
+                } else if (selectedMask)
+                {
+                
+                if (selectedMask.transform.parent) //remove self from old wearer
+                {
+                    selectedMask.transform.parent.GetComponent<PartyGoerBrain>().mask = null;
+                    selectedMask.transform.SetParent(null);
+                    selectedMask.transform.position = selectedMask.true_origin;
+                }
+                else
+                {
+                    selectedMask.transform.position = selectedMask.true_origin;
+                }
+
+                selectedMask = null;
+            }
+
+
+            if (chair != null && selectedPerson)// if chair is already taken
             {
                 ChairBrain chairbrain = chair.GetComponent<ChairBrain>();
                 if (chairbrain.myPerson != null) //swap places
@@ -246,7 +324,7 @@ public class MouseManager : MonoBehaviour
                 selectedPerson.currentChair = null;
                 selectedPerson.transform.SetParent(null);
                 selectedPerson.transform.position = selectedPerson.true_origin;
-            }*/  else //dragged somewhere with no chair
+            }*/  else if (selectedPerson) //dragged somewhere with no chair
             {
                 selectedPerson.transform.SetParent(null);
                 if (selectedPerson.currentChair) //remove self from old chair
@@ -265,6 +343,7 @@ public class MouseManager : MonoBehaviour
 
 
             boardmanager.updateBoard();
+            selectedMask = null;
             selectedPerson = null;
         }
     }

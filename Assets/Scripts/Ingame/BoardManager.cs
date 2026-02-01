@@ -12,8 +12,16 @@ public class BoardManager : MonoBehaviour
 
     public void updateBoard()
     {
+
+        for (int i = 0; i < people.Count; i++) // apply masks
+        {
+            ApplyMask(people[i]);
+        }
+
         for (int j = 0; j < tables.Count; j++) //super giga loops but basically it loops through all the partygoers and then checks if they're satisfied, drinking, eating, etc.
         {
+
+            
             TableBrain table = tables[j];
             for (int i = 0; i < table.myChairs.Length; i++)
             {
@@ -22,6 +30,7 @@ public class BoardManager : MonoBehaviour
                 if (chair.myPerson)
                 {
                     PartyGoerBrain person = chair.myPerson;
+
                     bool satisfied = true;
                     for (int x = 0; x < person.wants.Count; x++)
                     {
@@ -268,5 +277,34 @@ public class BoardManager : MonoBehaviour
         }
 
         return sum;
+    }
+
+
+    public void ApplyMask(PartyGoerBrain person)
+    {
+        person.myMood = person.baseMood;
+        person.myStyle = person.baseStyle;
+        person.wants = new List<PartyGoerBrain.Want>(); // copy over base wants to current wants
+        for (int i = 0; i < person.baseWants.Count; i++)
+        {
+            person.wants.Add(person.baseWants[i]);
+        }
+        
+        if (person.mask)
+        {
+            switch (person.mask.type)
+            {
+                case (Mask.Type.mood):
+                    person.myMood = person.mask.myMood;
+                    break;
+                case (Mask.Type.style):
+                    person.myStyle = person.mask.myStyle;
+                    break;
+                case (Mask.Type.want):
+                    person.wants.Add(person.mask.myWant);
+                    break;
+            }
+
+        }
     }
 }
