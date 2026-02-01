@@ -76,12 +76,35 @@ public class BoardManager : MonoBehaviour
                                 break;
                             case PartyGoerBrain.Want.talk_with_someone:
                                 satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.talk_with_someone);
+                                if (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.talk_with_someone))
+                                {
+                                    person.talking = true;
+                                } else
+                                {
+                                    person.talking = false;
+                                }
                                 break;
                             case PartyGoerBrain.Want.eat_with_someone:
                                 satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.eat_with_someone);
+                                if (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.eat_with_someone))
+                                {
+                                    person.eating = true;
+                                }
+                                else
+                                {
+                                    person.eating = false;
+                                }
                                 break;
                             case PartyGoerBrain.Want.drink_with_someone:
                                 satisfied = satisfied && searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.drink_with_someone);
+                                if (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.drink_with_someone))
+                                {
+                                    person.drinking = true;
+                                }
+                                else
+                                {
+                                    person.drinking = false;
+                                }
                                 break;
                             case PartyGoerBrain.Want.partnered:
                                 satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.partnered) || searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.phantom_of_the_opera));
@@ -537,6 +560,9 @@ public class BoardManager : MonoBehaviour
                     break;
                 case (Mask.Type.red):
                     person.myMood = PartyGoerBrain.Mood.neutral;
+                    break;
+                case (Mask.Type.oni):
+                    person.myMood = PartyGoerBrain.Mood.angry;
                     break;
             }
 

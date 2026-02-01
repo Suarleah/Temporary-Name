@@ -90,6 +90,68 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4107501833777930150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5071216657751568451}
+  - component: {fileID: 8948839403812249444}
+  m_Layer: 0
+  m_Name: Wardrobe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5071216657751568451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107501833777930150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3201791758515660986}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8948839403812249444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107501833777930150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d5111dadf3443f995602aae18a0229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Wardrobe
+  face_happy: {fileID: 0}
+  face_sad: {fileID: 0}
+  face_neutral: {fileID: 0}
+  face_angry: {fileID: 0}
+  style_plain: {fileID: 0}
+  style_fancy: {fileID: 0}
+  style_professional: {fileID: 0}
+  mask_default: {fileID: 0}
+  mask_happy: {fileID: 0}
+  mask_neutral: {fileID: 0}
+  mask_sad: {fileID: 0}
+  mask_angry: {fileID: 0}
+  mask_professional: {fileID: 0}
+  mask_plain: {fileID: 0}
+  mask_fancy: {fileID: 0}
+  mask_lonely: {fileID: 0}
+  mask_red_mask: {fileID: 0}
+  mask_oni: {fileID: 0}
 --- !u!1 &5056617442095550466
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +421,7 @@ Transform:
   m_Children:
   - {fileID: 5870032437180843253}
   - {fileID: 427607080415341564}
+  - {fileID: 5071216657751568451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4408418261243249472
@@ -374,6 +437,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyGoerBrain
   true_origin: {x: 0, y: 0}
+  facevisual: {fileID: 0}
+  maskvisual: {fileID: 0}
+  stylevisual: {fileID: 0}
+  drinkingvisual: {fileID: 0}
+  eatingvisual: {fileID: 0}
+  talkingvisual: {fileID: 0}
+  wardrobe: {fileID: 8948839403812249444}
   myMood: 0
   baseMood: 0
   wants: 
@@ -387,7 +457,6 @@ MonoBehaviour:
   eating: 0
   talking: 0
   too_noisy: 0
-  not_alone: 0
   mask: {fileID: 0}
   heart: {fileID: 5056617442095550466}
   currentChair: {fileID: 0}
