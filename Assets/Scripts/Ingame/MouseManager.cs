@@ -115,13 +115,20 @@ public class MouseManager : MonoBehaviour
                     text += "I want to sit on a wooden seat!";
                     break;
                 case PartyGoerBrain.Want.drink_wine: //jesus exclusive
-                    text += "I will drink wine";
+                    text += "I will drink wine.";
                     break;
                 case PartyGoerBrain.Want.center_of_table: //jesus exclusive
-                    text += "I will sit in the center of the table";
+                    text += "I will sit in the center of the table.";
                     break;
                 case PartyGoerBrain.Want.important: //caesar exclusive
-                    text += "I will sit in the most important seat";
+                    text += "I will sit in the most important seat.";
+                    break;
+                case PartyGoerBrain.Want.everyone_happy:
+                    text += "I want everyone to be happy!";
+                    break;
+                case PartyGoerBrain.Want.assassination:
+                    text += "I want to assassinate Caesar." +
+                        "\n I want to sit nextto Caesar or a conspirator.";
                     break;
             }
         }

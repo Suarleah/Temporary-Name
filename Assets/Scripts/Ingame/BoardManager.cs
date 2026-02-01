@@ -113,6 +113,9 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.wood_seat:
                                 satisfied = satisfied && checkSeatType(i, table.myChairs, ChairBrain.Type.wood);
                                 break;
+                            case PartyGoerBrain.Want.assassination:
+                                satisfied = satisfied && (searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.important) || searchWants(table.type, i, table.myChairs, PartyGoerBrain.Want.assassination));
+                                break;
                         }
                     }
                     person.satisfied = satisfied;
