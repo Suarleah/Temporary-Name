@@ -70,6 +70,7 @@ public class PartyGoerBrain : MonoBehaviour
 
     private void Update()
     {
+
         if (satisfied)
         {
             heart.SetActive(true);
@@ -114,6 +115,7 @@ public class PartyGoerBrain : MonoBehaviour
                 //else, the icon is darkened and still
             }
         }
+        updateVisual();
     }
 
     public void updateVisual() //called by boardManager, updates  outfit when a mask is applied
