@@ -96,11 +96,11 @@ public class PartyGoerBrain : MonoBehaviour
         {
             if (eating)
             {
-                //if their want is fulfilled, make the icon brighter, and move a little bit as though they're cheersing
+                utensilAnim.SetBool("eating", true);
             }
             else
             {
-                //else, the icon is darkened and still
+                utensilAnim.SetBool("eating", false);
             }
         }
 
@@ -108,11 +108,11 @@ public class PartyGoerBrain : MonoBehaviour
         {
             if (talking)
             {
-                //if their want is fulfilled, make the icon brighter, and make the dots bounce up and down as though they're in dialogue
+               talkAnim.SetBool("talking", true);
             }
             else
             {
-                //else, the icon is darkened and still
+                  talkAnim.SetBool("talking", false);
             }
         }
         updateVisual();
