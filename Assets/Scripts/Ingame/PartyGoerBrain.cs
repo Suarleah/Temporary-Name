@@ -171,6 +171,9 @@ public class PartyGoerBrain : MonoBehaviour
                 if (wardrobe.mask_default)
                 {
                     maskvisual.sprite = wardrobe.mask_default;
+                } else
+                {
+                    maskvisual.sprite = null;
                 }
             } else
             {
