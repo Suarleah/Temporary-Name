@@ -686,6 +686,14 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6208748349645595752, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -771,6 +779,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7102366717183661479, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8716682660257688331, guid: 4aeed3797fc834eb690f28c0a98671e3, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

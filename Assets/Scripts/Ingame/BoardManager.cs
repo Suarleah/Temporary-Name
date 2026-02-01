@@ -160,6 +160,19 @@ public class BoardManager : MonoBehaviour
                             case PartyGoerBrain.Want.dont_sit_with_someone_with_style_professional:
                                 satisfied = satisfied && !searchStyle(table.type, i, table.myChairs, PartyGoerBrain.Style.professional);
                                 break;
+                            case PartyGoerBrain.Want.no_sad:
+                                satisfied = satisfied && !searchMood(table.type, i, table.myChairs, PartyGoerBrain.Mood.sad);
+                                break;
+                            case PartyGoerBrain.Want.safe:
+                                //check for evil spirit location, he will be in index 0
+                                PartyGoerBrain evil = people[0];
+                                if (evil.currentChair)
+                                {
+                                    int index = System.Array.IndexOf(table.myChairs, evil.currentChair);
+                                    satisfied = satisfied && !searchPeople(table.type, index, table.myChairs);
+                                }
+                                
+                                break;
                         }
                     }
                     person.satisfied = satisfied;

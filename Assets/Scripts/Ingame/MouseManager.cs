@@ -140,7 +140,7 @@ public class MouseManager : MonoBehaviour
                     text += "I will sit in the most important seat!";
                     break;
                 case PartyGoerBrain.Want.everyone_happy:
-                    text += "I want everyone to be happy!";
+                    text += "I want everyone around me to be happy!";
                     break;
                 case PartyGoerBrain.Want.assassination:
                     text += "I want to assassinate Caesar!";
@@ -159,6 +159,12 @@ public class MouseManager : MonoBehaviour
                     break;
                 case PartyGoerBrain.Want.dont_sit_with_someone_with_style_professional:
                     text += "I DONT want to sit next to someone who dresses professionally!!";
+                    break;
+                case PartyGoerBrain.Want.no_sad:
+                    text += "I don't want anyone around me to be sad!";
+                    break;
+                case PartyGoerBrain.Want.safe:
+                    text += "I want to keep everyone safe!";
                     break;
             }
         }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1673422524554653153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392075312752479537}
+  m_Layer: 0
+  m_Name: WantVisuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392075312752479537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673422524554653153}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5870032437180843253}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3504521621832483144
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,12 +194,12 @@ GameObject:
   - component: {fileID: 427607080415341564}
   - component: {fileID: 6962626410069745026}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &427607080415341564
 Transform:
   m_ObjectHideFlags: 0
@@ -178,11 +209,11 @@ Transform:
   m_GameObject: {fileID: 5056617442095550466}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.764, y: -0.575, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3201791758515660986}
+  m_Father: {fileID: 5870032437180843253}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6962626410069745026
 SpriteRenderer:
@@ -364,6 +395,8 @@ Transform:
   m_Children:
   - {fileID: 885180207271788325}
   - {fileID: 974549261291781940}
+  - {fileID: 1392075312752479537}
+  - {fileID: 427607080415341564}
   m_Father: {fileID: 3201791758515660986}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1179532286186619087
@@ -420,7 +453,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5870032437180843253}
-  - {fileID: 427607080415341564}
   - {fileID: 5071216657751568451}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -456,7 +488,6 @@ MonoBehaviour:
   drinking: 0
   eating: 0
   talking: 0
-  too_noisy: 0
   mask: {fileID: 0}
   heart: {fileID: 5056617442095550466}
   currentChair: {fileID: 0}
