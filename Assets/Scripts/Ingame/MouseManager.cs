@@ -47,6 +47,22 @@ public class MouseManager : MonoBehaviour
     {
         infoPanel.transform.position = new Vector3(mousePos.x + infoPanelOffset.x, mousePos.y + infoPanelOffset.y, 0);
 
+        if (mousePos.x > 0)
+        {
+            infoPanelOffset.x = -4;
+        } else
+        {
+            infoPanelOffset.x = 1;
+        }
+
+        if (mousePos.y > 0)
+        {
+            infoPanelOffset.y = -3;
+        } else
+        {
+            infoPanelOffset.y = 1;
+        }
+
         string text = "";
         for (int i = 0; i < partyGoer.wants.Count; i++) //display wants
         {
@@ -131,6 +147,8 @@ public class MouseManager : MonoBehaviour
                     break;
                 case PartyGoerBrain.Want.not_angry:
                     text += "I don't like angry people";
+                    text += "I want to assassinate Caesar." +
+                        "\n I want to sit nextto Caesar or a conspirator.";
                     break;
             }
         }

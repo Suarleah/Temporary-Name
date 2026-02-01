@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MouseManager
   mousePos: {x: 0, y: 0}
   selectedPerson: {fileID: 0}
-  infoPanelOffset: {x: 1.5, y: 1}
+  selectedMask: {fileID: 0}
+  infoPanelOffset: {x: 0, y: 1.5}
   showInfo: 0
   boardmanager: {fileID: 0}
   infoPanel: {fileID: 0}
