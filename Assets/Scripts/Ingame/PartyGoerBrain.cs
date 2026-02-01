@@ -6,9 +6,10 @@ public class PartyGoerBrain : MonoBehaviour
 {
     public Vector2 true_origin; // This is where the partygoer started on screen (in the waiting area)
     //public Vector2 origin; // used to lock partygoard into place, noticed it was not used
-    public Sprite facevisual;
-    public Sprite maskvisual;
-    public Sprite stylevisual;
+
+    public GameObject facevisualobj;
+    public GameObject maskvisualobj;
+    public GameObject stylevisualobj;
 
     // visuals for some of 
     public GameObject drinkingvisual; //eating and drinking are mutually exclusive
@@ -108,6 +109,9 @@ public class PartyGoerBrain : MonoBehaviour
 
     public void updateVisual() //called by boardManager, updates  outfit when a mask is applied
     {
+        SpriteRenderer facevisual = facevisualobj.GetComponent<SpriteRenderer>();
+        SpriteRenderer maskvisual = maskvisualobj.GetComponent<SpriteRenderer>();
+        SpriteRenderer stylevisual = stylevisualobj.GetComponent<SpriteRenderer>();
         if (wardrobe)
         {
             switch (myMood)
@@ -115,25 +119,25 @@ public class PartyGoerBrain : MonoBehaviour
                 case Mood.happy:
                     if (wardrobe.face_happy)
                     {
-                        facevisual = wardrobe.face_happy;
+                        facevisual.sprite = wardrobe.face_happy;
                     }
                     break;
                 case Mood.neutral:
                     if (wardrobe.face_neutral)
                     {
-                        facevisual = wardrobe.face_neutral;
+                        facevisual.sprite = wardrobe.face_neutral;
                     }
                     break;
                 case Mood.sad:
                     if (wardrobe.face_sad)
                     {
-                        facevisual = wardrobe.face_sad;
+                        facevisual.sprite = wardrobe.face_sad;
                     }
                     break;
                 case Mood.angry:
                     if (wardrobe.face_angry)
                     {
-                        facevisual = wardrobe.face_angry;
+                        facevisual.sprite = wardrobe.face_angry;
                     }
                     break;
             }
@@ -143,19 +147,19 @@ public class PartyGoerBrain : MonoBehaviour
                 case Style.plain:
                     if (wardrobe.style_plain)
                     {
-                        stylevisual = wardrobe.style_plain;
+                        stylevisual.sprite = wardrobe.style_plain;
                     }
                     break;
                 case Style.professional:
                     if (wardrobe.style_professional)
                     {
-                        stylevisual = wardrobe.style_professional;
+                        stylevisual.sprite = wardrobe.style_professional;
                     }
                     break;
                 case Style.fancy:
                     if (wardrobe.style_fancy)
                     {
-                        stylevisual = wardrobe.style_fancy;
+                        stylevisual.sprite = wardrobe.style_fancy;
                     }
                     break;
             }
@@ -164,7 +168,7 @@ public class PartyGoerBrain : MonoBehaviour
             {
                 if (wardrobe.mask_default)
                 {
-                    maskvisual = wardrobe.mask_default;
+                    maskvisual.sprite = wardrobe.mask_default;
                 }
             } else
             {
@@ -172,41 +176,41 @@ public class PartyGoerBrain : MonoBehaviour
                 {
                     if (mask.myMood == Mood.happy && wardrobe.mask_happy)
                     {
-                        maskvisual = wardrobe.mask_happy;
+                        maskvisual.sprite = wardrobe.mask_happy;
                     }
                     if (mask.myMood == Mood.neutral && wardrobe.mask_neutral)
                     {
-                        maskvisual = wardrobe.mask_neutral;
+                        maskvisual.sprite = wardrobe.mask_neutral;
                     }
                     if (mask.myMood == Mood.sad && wardrobe.mask_sad)
                     {
-                        maskvisual = wardrobe.mask_sad;
+                        maskvisual.sprite = wardrobe.mask_sad;
                     }
                     if (mask.myMood == Mood.angry && wardrobe.mask_angry)
                     {
-                        maskvisual = wardrobe.mask_angry;
+                        maskvisual.sprite = wardrobe.mask_angry;
                     }
                 }
                 if (mask.type == Mask.Type.style)
                 {
                     if (mask.myStyle == Style.plain && wardrobe.mask_plain)
                     {
-                        maskvisual = wardrobe.mask_plain;
+                        maskvisual.sprite = wardrobe.mask_plain;
                     }
                     if (mask.myStyle == Style.professional && wardrobe.mask_professional)
                     {
-                        maskvisual = wardrobe.mask_professional;
+                        maskvisual.sprite = wardrobe.mask_professional;
                     }
                     if (mask.myStyle == Style.fancy && wardrobe.mask_fancy)
                     {
-                        maskvisual = wardrobe.mask_fancy;
+                        maskvisual.sprite = wardrobe.mask_fancy;
                     }
                 }
                 if (mask.type == Mask.Type.lonely)
                 {
                     if (wardrobe.mask_lonely)
                     {
-                        maskvisual = wardrobe.mask_lonely;
+                        maskvisual.sprite = wardrobe.mask_lonely;
                     }
                 }
 
@@ -214,14 +218,14 @@ public class PartyGoerBrain : MonoBehaviour
                 {
                     if (wardrobe.mask_red_mask)
                     {
-                        maskvisual = wardrobe.mask_red_mask;
+                        maskvisual.sprite = wardrobe.mask_red_mask;
                     }
                 }
                 if (mask.type == Mask.Type.oni)
                 {
                     if (wardrobe.mask_oni)
                     {
-                        maskvisual = wardrobe.mask_oni;
+                        maskvisual.sprite = wardrobe.mask_oni;
                     }
                 }
             }

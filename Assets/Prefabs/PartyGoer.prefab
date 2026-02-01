@@ -258,21 +258,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d5111dadf3443f995602aae18a0229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wardrobe
-  face_happy: {fileID: 5607041078741136343, guid: 8ac7f5f220dc74479987b5691b045a9a, type: 3}
-  face_sad: {fileID: -4199707902365543440, guid: 1ef3e19c147774eab81d59f8051ceed8, type: 3}
-  face_neutral: {fileID: -7717167018793347465, guid: 172ee014bdb26404ab376059e390e019, type: 3}
-  face_angry: {fileID: 4407775250981760285, guid: f145e452c70134d819c19c8ef268ac0c, type: 3}
-  style_plain: {fileID: -1434415595823029580, guid: bfe906765eb6a41ee9b25ea42cb0735f, type: 3}
-  style_fancy: {fileID: -4064020563211203523, guid: 27a91760144704a5b839ff2d5730c58f, type: 3}
-  style_professional: {fileID: 2838728417461762622, guid: 883536ea0e1bb4e9b975e51520075d16, type: 3}
-  mask_default: {fileID: 3690484727692537510, guid: 46160d653109749d6985f9a26333c370, type: 3}
-  mask_happy: {fileID: 1257189671247067233, guid: 4152dc2c16e104121be010a2fcd9e03e, type: 3}
-  mask_neutral: {fileID: 8070934972333181093, guid: 5810b9995a90c44f28f08472d23b79d6, type: 3}
-  mask_sad: {fileID: 7265831534257218243, guid: 770fb0ab2c67046c7a54f00084bc20b5, type: 3}
-  mask_angry: {fileID: -3001527754136976121, guid: 686a67ed7e0284c6586af0dcba50b748, type: 3}
-  mask_professional: {fileID: 4488830158906507047, guid: cd9f193c345b14da39320d20aa450ac6, type: 3}
-  mask_plain: {fileID: -714900480631793147, guid: 135d0f595dbd2408bb254179a60f5c78, type: 3}
-  mask_fancy: {fileID: 7995768964925072986, guid: 5574beb32094a441db86c3b474bc6d0f, type: 3}
+  face_happy: {fileID: 21300000, guid: 8ac7f5f220dc74479987b5691b045a9a, type: 3}
+  face_sad: {fileID: 21300000, guid: 1ef3e19c147774eab81d59f8051ceed8, type: 3}
+  face_neutral: {fileID: 21300000, guid: 172ee014bdb26404ab376059e390e019, type: 3}
+  face_angry: {fileID: 21300000, guid: f145e452c70134d819c19c8ef268ac0c, type: 3}
+  style_plain: {fileID: 21300000, guid: bfe906765eb6a41ee9b25ea42cb0735f, type: 3}
+  style_fancy: {fileID: 21300000, guid: 27a91760144704a5b839ff2d5730c58f, type: 3}
+  style_professional: {fileID: 21300000, guid: 883536ea0e1bb4e9b975e51520075d16, type: 3}
+  mask_default: {fileID: 21300000, guid: 46160d653109749d6985f9a26333c370, type: 3}
+  mask_happy: {fileID: 21300000, guid: 4152dc2c16e104121be010a2fcd9e03e, type: 3}
+  mask_neutral: {fileID: 21300000, guid: 5810b9995a90c44f28f08472d23b79d6, type: 3}
+  mask_sad: {fileID: 21300000, guid: 770fb0ab2c67046c7a54f00084bc20b5, type: 3}
+  mask_angry: {fileID: 21300000, guid: 686a67ed7e0284c6586af0dcba50b748, type: 3}
+  mask_professional: {fileID: 21300000, guid: cd9f193c345b14da39320d20aa450ac6, type: 3}
+  mask_plain: {fileID: 21300000, guid: 135d0f595dbd2408bb254179a60f5c78, type: 3}
+  mask_fancy: {fileID: 21300000, guid: 5574beb32094a441db86c3b474bc6d0f, type: 3}
   mask_lonely: {fileID: 0}
   mask_red_mask: {fileID: 0}
   mask_oni: {fileID: 0}
@@ -744,9 +744,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PartyGoerBrain
   true_origin: {x: 0, y: 0}
-  facevisual: {fileID: 0}
-  maskvisual: {fileID: 0}
-  stylevisual: {fileID: 0}
+  facevisualobj: {fileID: 8416667733135934440}
+  maskvisualobj: {fileID: 9170268408500105261}
+  stylevisualobj: {fileID: 7884334292661080027}
   drinkingvisual: {fileID: 0}
   eatingvisual: {fileID: 0}
   talkingvisual: {fileID: 0}
